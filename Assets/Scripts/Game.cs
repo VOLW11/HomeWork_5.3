@@ -7,13 +7,6 @@ public class Game : MonoBehaviour
     private IConditions _conditionWin;
     private IConditions _conditionDefeat;
 
-    private Character _character;
-
-    public void Initialize(Character character)
-    {
-        _character = character;
-    }
-
    public void InitializeWin(IConditions conditionWin)
     {
         _conditionWin = conditionWin;
@@ -26,13 +19,15 @@ public class Game : MonoBehaviour
         _conditionDefeat.EndGame += StopGame;
     }
 
-    private void Awake()
+    private void StopGame(string message)
     {
-       // _conditionWin.WinGame += StopGame;
+        Debug.Log(message);
+        Time.timeScale = 0f;
     }
 
-    private void StopGame()
+    private void OnDestroy()
     {
-        Debug.Log("Получилось еба");
+        _conditionWin.EndGame -= StopGame;
+        _conditionDefeat.EndGame -= StopGame;
     }
 }

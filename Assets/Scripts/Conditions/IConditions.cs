@@ -5,5 +5,5 @@ using UnityEngine;
 
 public interface IConditions
 {
-    event Action EndGame;
+    event Action<string> EndGame;
 }

@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour, IDamageable
     private Mover _mover;
     private Rotator _rotator;
     private int _damage = 10;
+    private float _timeChangePoint = 1f;
+    private float _deadZone = 0.05f;
 
     private Vector3 _randomPoint;
 
@@ -31,7 +33,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         _time += Time.deltaTime;
 
-        if (_time >= 1f)
+        if (_time >= _timeChangePoint)
         {
             _randomPoint = new Vector3(UnityEngine.Random.Range(-180, 180), 0, UnityEngine.Random.Range(-180, 180));
             _time = 0;
@@ -40,7 +42,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
-        if (_randomPoint.magnitude > 0.05f)
+        if (_randomPoint.magnitude > _deadZone)
         {
             _mover.MoveTo(_randomPoint);
             _rotator.ForceRotateTo(_randomPoint);
@@ -68,7 +70,6 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (currentHealth <= 0)
         {
-            Debug.Log("DEATH");
            _enemySpawner.RemoveEnemy(this);
             Destroy(gameObject);
         }

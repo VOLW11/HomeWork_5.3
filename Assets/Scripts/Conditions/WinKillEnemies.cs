@@ -6,15 +6,17 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class WinKillEnemies : IConditions
 {
-    public event Action EndGame;
+    public event Action<string> EndGame;
+
+    private string _win = "Победа! Убито необходимое число врагов";
 
     private EnemySpawner _enemySpawner;
     private int _enemiesKilled = 0;
+    private int _killsToWin = 5;
 
     public WinKillEnemies(EnemySpawner enemySpawner)
     {
         _enemySpawner = enemySpawner;
-
         _enemySpawner.DeathEnemy += KillsEnemy;
     }
 
@@ -22,15 +24,12 @@ public class WinKillEnemies : IConditions
     {
         _enemiesKilled++;
 
-        if (_enemiesKilled >= 5)
+        if (_enemiesKilled >= _killsToWin)
         {
             Debug.Log(_enemiesKilled + ": Убито врагов");
-            EndGame?.Invoke();
+            _enemySpawner.DeathEnemy -= KillsEnemy;
+
+            EndGame?.Invoke(_win);
         }
     }
-    /*  private void Destroy()
-        {
-            _enemy.Death -= KillsEnemy;
-
-        }*/
 }

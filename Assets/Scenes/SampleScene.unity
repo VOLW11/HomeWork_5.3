@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -763,37 +763,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579840958}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &807814009
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 807814010}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &807814010
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 807814009}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,7 +964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b60e929f92bb041ad36b5497642978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defeatConditions: 0
+  _defeatConditions: 1
   _winConditions: 1
   _characterPrefab: {fileID: 1140981931317320204, guid: b2e3440cf2959d9438bbcb48ac6b977f,
     type: 3}
@@ -1005,7 +974,7 @@ MonoBehaviour:
   _winTime: {fileID: 938212612}
   _enemyPrefab: {fileID: 7749106335500620119, guid: a424936e910b83940a5979e224314f52,
     type: 3}
-  _spawner: {fileID: 1568969667}
+  _enemySpawner: {fileID: 1568969667}
   _points:
   - {fileID: 839159434}
   - {fileID: 1086417897}
@@ -1473,4 +1442,3 @@ SceneRoots:
   - {fileID: 843826444}
   - {fileID: 1568969666}
   - {fileID: 938212609}
-  - {fileID: 807814010}

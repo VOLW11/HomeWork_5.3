@@ -18,7 +18,7 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private WinTime _winTime;
 
     [SerializeField] Enemy _enemyPrefab;
-    [SerializeField] EnemySpawner _spawner;
+    [SerializeField] EnemySpawner _enemySpawner;
     [SerializeField] private List<Transform> _points;
 
     private void Awake()
@@ -27,15 +27,14 @@ public class Bootstrap : MonoBehaviour
 
         Character character = Instantiate(_characterPrefab, transform.position, Quaternion.identity, null);
         character.Initialize(health);
-
         _camera.Follow = character.transform;
 
-        _spawner.Initialize(_enemyPrefab, _points, _maxHealth);
+        _enemySpawner.Initialize(_enemyPrefab, _points, _maxHealth);
 
         switch (_defeatConditions)
         {
             case DefeatConditions.ManyEnemies:
-                _game.InitializeDefeat(new DefeatManyEnemies(_spawner));
+                _game.InitializeDefeat(new DefeatManyEnemies(_enemySpawner));
                 break;
 
             case DefeatConditions.PlayerDeath:
@@ -51,7 +50,7 @@ public class Bootstrap : MonoBehaviour
                 break;
 
             case WinConditions.killEnemies:
-                _game.InitializeWin(new WinKillEnemies(_spawner));
+                _game.InitializeWin(new WinKillEnemies(_enemySpawner));
                 break;
         }
     }

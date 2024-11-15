@@ -6,6 +6,7 @@ public class Shooter : MonoBehaviour
 {
     [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private Transform _shootPoint;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))

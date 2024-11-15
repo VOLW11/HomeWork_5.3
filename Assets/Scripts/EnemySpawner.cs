@@ -8,7 +8,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public event Action DeathEnemy;
-    public event Action SpawnEnemy;
+    public event Action<List<Enemy>> SpawnEnemy;
 
     private Enemy _enemyPrefab;
     private List<Transform> _points;
@@ -44,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
     public void AddEnemy(Enemy enemy)
     {
         _enemies.Add(enemy);
-        SpawnEnemy?.Invoke();
+        SpawnEnemy?.Invoke(_enemies);
     }
 
     public void RemoveEnemy(Enemy enemy)
@@ -65,8 +65,6 @@ public class EnemySpawner : MonoBehaviour
 
             yield return new WaitForSeconds(5);
         }
-
-        yield return new WaitForSeconds(5);
     }
 
     private void SwitchPoint()

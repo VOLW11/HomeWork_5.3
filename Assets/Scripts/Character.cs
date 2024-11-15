@@ -13,6 +13,7 @@ public class Character : MonoBehaviour, IDamageable
     private Mover _mover;
     private Rotator _rotator;
     private Health _health;
+    private float _deadZone = 0.05f;
 
     private Vector3 _input;
 
@@ -31,7 +32,7 @@ public class Character : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
-        if (_input.magnitude > 0.05f)
+        if (_input.magnitude > _deadZone)
         {
             _mover.MoveTo(_input);
             _rotator.ForceRotateTo(_input);
