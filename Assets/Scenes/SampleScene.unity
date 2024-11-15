@@ -964,7 +964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b60e929f92bb041ad36b5497642978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defeatConditions: 1
+  _defeatConditions: 0
   _winConditions: 1
   _characterPrefab: {fileID: 1140981931317320204, guid: b2e3440cf2959d9438bbcb48ac6b977f,
     type: 3}
