@@ -12,7 +12,7 @@ public class WinKillEnemies : IConditions
     private int _enemiesKilled = 0;
 
     public WinKillEnemies(EnemySpawner enemySpawner)
-    { 
+    {
         _enemySpawner = enemySpawner;
 
         _enemySpawner.DeathEnemy += KillsEnemy;
@@ -21,14 +21,16 @@ public class WinKillEnemies : IConditions
     private void KillsEnemy()
     {
         _enemiesKilled++;
-        Debug.Log(_enemiesKilled + ": Убито врагов");
-        if (_enemiesKilled >= 5)
-            EndGame?.Invoke();
-    }
 
-  /*  private void Destroy()
-    {
-        _enemy.Death -= KillsEnemy;
-    
-    }*/
+        if (_enemiesKilled >= 5)
+        {
+            Debug.Log(_enemiesKilled + ": Убито врагов");
+            EndGame?.Invoke();
+        }
+    }
+    /*  private void Destroy()
+        {
+            _enemy.Death -= KillsEnemy;
+
+        }*/
 }

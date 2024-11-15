@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour, IDamageable
 {
+    public event Action<Character> DeathCharacter;
+
     [SerializeField] private float _speed;
     [SerializeField] private CharacterController _characterController;
 
@@ -45,6 +48,8 @@ public class Character : MonoBehaviour, IDamageable
     private void OnHealthChanged(int currentHealth)
     {
         if (currentHealth <= 0)
-            Destroy(gameObject);
+        {
+            DeathCharacter?.Invoke(this);
+        }
     }
 }

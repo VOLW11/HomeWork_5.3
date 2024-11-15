@@ -39,7 +39,6 @@ public class EnemySpawner : MonoBehaviour
         }
 
         _spawnCoroutine = StartCoroutine(Spawner());
-
     }
 
     public void AddEnemy(Enemy enemy)
@@ -63,8 +62,6 @@ public class EnemySpawner : MonoBehaviour
             Enemy enemy = Instantiate(_enemyPrefab, _currentTarget, Quaternion.identity, null);
             enemy.Initialize(health, this);
             AddEnemy(enemy);
-
-            Debug.Log(_enemies.Count);
 
             yield return new WaitForSeconds(5);
         }

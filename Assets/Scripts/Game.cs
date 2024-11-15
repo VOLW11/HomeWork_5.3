@@ -7,6 +7,13 @@ public class Game : MonoBehaviour
     private IConditions _conditionWin;
     private IConditions _conditionDefeat;
 
+    private Character _character;
+
+    public void Initialize(Character character)
+    {
+        _character = character;
+    }
+
    public void InitializeWin(IConditions conditionWin)
     {
         _conditionWin = conditionWin;

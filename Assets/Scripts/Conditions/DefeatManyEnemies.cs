@@ -20,8 +20,11 @@ public class DefeatManyEnemies : IConditions
     private void SpawnEnemy()
     {
         _enemiesSpawn++;
-        Debug.Log(_enemiesSpawn + ": Всего врагов");
+
         if (_enemiesSpawn >= 3)
+        {
+            Debug.Log(_enemiesSpawn + ": Всего врагов");
             EndGame?.Invoke();
+        }
     }
 }

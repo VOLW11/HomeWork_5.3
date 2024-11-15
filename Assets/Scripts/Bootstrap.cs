@@ -21,7 +21,6 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] EnemySpawner _spawner;
     [SerializeField] private List<Transform> _points;
 
-
     private void Awake()
     {
         Health health = new Health(_maxHealth);
@@ -33,7 +32,6 @@ public class Bootstrap : MonoBehaviour
 
         _spawner.Initialize(_enemyPrefab, _points, _maxHealth);
 
-
         switch (_defeatConditions)
         {
             case DefeatConditions.ManyEnemies:
@@ -41,7 +39,7 @@ public class Bootstrap : MonoBehaviour
                 break;
 
             case DefeatConditions.PlayerDeath:
-                //
+                _game.InitializeDefeat(new DefeatDeathCharacter(character));
                 break;
         }
 
